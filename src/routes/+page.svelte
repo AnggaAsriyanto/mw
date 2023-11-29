@@ -384,7 +384,7 @@
          <div class="email-m">
              <div class="link-info-m"> 
                  <a class="fm my-link-m show" href="mailto:anggazxcasd@gmail.com">anggazxcasd<span>@</span>gmail.com</a>
-                 <a class="my-link-m fm show" href="mailto:halo@gmail.com">Linkedin</a>
+                 <a class="my-link-m fm" href="mailto:halo@gmail.com">Linkedin</a>
              </div>
              <button class="btn-click"><i class="fas fa-arrow-circle-down"></i></button>
          </div>
@@ -536,9 +536,30 @@ main {
     width: 100%;
     top: 0;
     display: none;
+    transform: translateX(-100vw);
     z-index: 100;
     transition: 1s ease;
     background-color: rgb(70, 68, 68);
+    & .link-m a {
+        opacity: 0;
+        transform: translateX(-10vw);
+        transition: 1s ease;
+    }
+    &.show {
+        transform: translateX(0);
+        & .link-m a {
+            opacity: 1;
+            transform: translateX(0);
+            transition: transform 1s ease,
+                        opacity 1s ease;
+            &:nth-of-type(1) {
+                transition-delay: 0.4s;
+            }
+            &:nth-of-type(2) {
+                transition-delay: 0.5s;
+            }
+        }
+    }
 }
 
 .link-box {
@@ -968,33 +989,7 @@ body, body a, body button {
 
     .bars-menu {
         transition: transform 0.8s ease;
-        transform: translateX(-100vw);
         display: block;
-    }
-
-    .bars-menu.show {
-        transform: translateX(0);
-    }
-
-    .bars-menu .link-m a {
-        opacity: 0;
-        transform: translateX(-10vw);
-        transition: 1s ease;
-    }
-
-    .bars-menu.show .link-m a {
-        opacity: 1;
-        transform: translateX(0);
-        transition: transform 1s ease,
-                    opacity 1s ease;
-    }
-
-    .bars-menu.show .link-m a:nth-of-type(1) {
-        transition-delay: 0.4s;
-    }
-
-    .bars-menu.show .link-m a:nth-of-type(2) {
-        transition-delay: 0.5s;
     }
 
     .bars-menu .email-m button {

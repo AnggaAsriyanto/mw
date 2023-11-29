@@ -729,13 +729,35 @@ main {
 }
 
 .bars-menu {
-    position: fixed;
+    position: absolute;
+    height: 100%; 
+    width: 100%;
     top: 0;
-    height: 100vh;
-    width: 100vw;
     display: none;
+    transform: translateX(-100vw);
     z-index: 100;
-    background-color: #fff0fe;
+    transition: 1s ease;
+    background-color: rgb(70, 68, 68);
+    & .link-m a {
+        opacity: 0;
+        transform: translateX(-10vw);
+        transition: 1s ease;
+    }
+    &.show {
+        transform: translateX(0);
+        & .link-m a {
+            opacity: 1;
+            transform: translateX(0);
+            transition: transform 1s ease,
+                        opacity 1s ease;
+            &:nth-of-type(1) {
+                transition-delay: 0.4s;
+            }
+            &:nth-of-type(2) {
+                transition-delay: 0.5s;
+            }
+        }
+    }
 }
 
 .link-box {
@@ -761,7 +783,7 @@ main {
     letter-spacing: 0.5px;
     text-transform: uppercase;
     text-decoration: none;
-    color: var(--sec-color-dark);
+    color: var(--sec-color);
 }
 
 .email-m {
@@ -790,7 +812,7 @@ main {
 
 .link-info-m .my-link-m {
     position: absolute;
-    color: rgba(0, 0, 0, 0.6);
+    color: var(--sec-color);
     text-decoration: none;
     opacity: 0;
     z-index: 100;
@@ -930,33 +952,7 @@ body, body a, body button {
 
     .bars-menu {
         transition: transform 0.8s ease;
-        transform: translateX(-100vw);
         display: block;
-    }
-
-    .bars-menu.show {
-        transform: translateX(0);
-    }
-
-    .bars-menu .link-m a {
-        opacity: 0;
-        transform: translateX(-10vw);
-        transition: 1s ease;
-    }
-
-    .bars-menu.show .link-m a {
-        opacity: 1;
-        transform: translateX(0);
-        transition: transform 1s ease,
-                    opacity 1s ease;
-    }
-
-    .bars-menu.show .link-m a:nth-of-type(1) {
-        transition-delay: 0.4s;
-    }
-
-    .bars-menu.show .link-m a:nth-of-type(2) {
-        transition-delay: 0.5s;
     }
 
     .bars-menu .email-m button {
@@ -964,7 +960,7 @@ body, body a, body button {
         border: none;
         margin-top: 2em;
         font-size: 1em;
-        color: var(--sec-color-dark);
+        color: var(--sec-color);
     }
 
     .bars-menu .email-m a {
